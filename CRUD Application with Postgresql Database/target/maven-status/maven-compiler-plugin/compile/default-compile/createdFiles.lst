@@ -1,0 +1,7 @@
+com\example\Lab2\Controller\CarController.class
+com\example\Lab2\Model\Car$CarBuilder.class
+com\example\Lab2\Repository\CarRepository.class
+com\example\Lab2\Service\ICarService.class
+com\example\Lab2\Lab2Application.class
+com\example\Lab2\Model\Car.class
+com\example\Lab2\Service\CarService.class
