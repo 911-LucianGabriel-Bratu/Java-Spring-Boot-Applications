@@ -1,10 +1,12 @@
 package com.example.CarsApp.Service;
 
+import com.example.CarsApp.Model.DTOs.DealershipDTO;
 import com.example.CarsApp.Model.Dealership;
 import com.example.CarsApp.Repository.DealershipRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -17,9 +19,26 @@ public class DealershipService implements IDealershipService{
         return this.dealershipRepository.save(dealership);
     }
 
+    public List<Dealership> fetchDealershipList(){
+        return  this.dealershipRepository.findAll();
+    }
+
     @Override
-    public List<Dealership> fetchDealershipList() {
-        return this.dealershipRepository.findAll();
+    public List<DealershipDTO> fetchDealershipDTOList() {
+        List<DealershipDTO> dealershipDTOS = new ArrayList<>();
+        List<Dealership> dealershipList =  this.dealershipRepository.findAll();
+        for(Dealership dealership : dealershipList){
+            DealershipDTO dealershipDTO = new DealershipDTO();
+            dealershipDTO.setId(dealership.getDealershipID());
+            dealershipDTO.setName(dealership.getName());
+            dealershipDTO.setReputation(dealership.getReputation());
+            dealershipDTO.setCapacity(dealership.getCapacity());
+            dealershipDTO.setHasService(dealership.isHasService());
+            dealershipDTO.setOffersTradeIn(dealership.isOffersTradeIn());
+            dealershipDTO.setAddress(dealership.getAddress());
+            dealershipDTOS.add(dealershipDTO);
+        }
+        return dealershipDTOS;
     }
 
     @Override

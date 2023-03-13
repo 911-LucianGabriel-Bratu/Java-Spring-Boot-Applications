@@ -1,12 +1,16 @@
 package com.example.CarsApp.Service;
 
 import com.example.CarsApp.Model.Car;
+import com.example.CarsApp.Model.DTOs.CarDealershipDTO;
+import com.example.CarsApp.Model.DTOs.CarDealershipIDDTO;
+import com.example.CarsApp.Model.DTOs.DealershipDTO;
 import com.example.CarsApp.Model.Dealership;
 import com.example.CarsApp.Repository.CarRepository;
 import com.example.CarsApp.Repository.DealershipRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -41,6 +45,73 @@ public class CarService implements ICarService{
             }
         }
         return null;
+    }
+
+    public List<CarDealershipIDDTO> getAllCars(){
+        List<CarDealershipIDDTO> carDealershipIDDTOList = new ArrayList<>();
+
+        List<Car> cars = this.carRepository.findAll();
+        List<Dealership> dealerships = this.dealershipRepository.findAll();
+
+        for(Car c : cars){
+            for(Dealership d : dealerships){
+                List<Car> carList = d.getCars();
+                if(carList.contains(c)){
+                    CarDealershipIDDTO carDealershipIDDTO = new CarDealershipIDDTO();
+                    carDealershipIDDTO.setCarID(c.getCarID());
+                    carDealershipIDDTO.setCarManufacturer(c.getCarManufacturer());
+                    carDealershipIDDTO.setCarModel(c.getCarModel());
+                    carDealershipIDDTO.setCarRetailPrice(c.getCarRetailPrice());
+                    carDealershipIDDTO.setCarWeight(c.getCarWeight());
+                    carDealershipIDDTO.setCarTopSpeed(c.getCarTopSpeed());
+                    carDealershipIDDTO.setDealershipID(d.getDealershipID());
+                    carDealershipIDDTOList.add(carDealershipIDDTO);
+                }
+            }
+        }
+
+        return carDealershipIDDTOList;
+    }
+
+    @Override
+    public CarDealershipDTO getOneCarWithDealershipObject(Long carID) {
+
+        List<Car> carList = this.carRepository.findAll();
+        List<Dealership> dealerships = this.dealershipRepository.findAll();
+
+        Car foundCar = new Car();
+
+        for(Car c : carList){
+            if(Objects.equals(c.getCarID(), carID)) foundCar = c;
+        }
+
+        CarDealershipDTO carDealershipDTO = new CarDealershipDTO();
+
+        for(Dealership d : dealerships){
+            List<Car> carDealershipList = d.getCars();
+            if(carDealershipList.contains(foundCar)){
+                DealershipDTO dealershipDTO = new DealershipDTO();
+                carDealershipDTO.setCarID(foundCar.getCarID());
+                carDealershipDTO.setCarManufacturer(foundCar.getCarManufacturer());
+                carDealershipDTO.setCarModel(foundCar.getCarModel());
+                carDealershipDTO.setCarRetailPrice(foundCar.getCarRetailPrice());
+                carDealershipDTO.setCarWeight(foundCar.getCarWeight());
+                carDealershipDTO.setCarTopSpeed(foundCar.getCarTopSpeed());
+
+                dealershipDTO.setId(d.getDealershipID());
+                dealershipDTO.setName(d.getName());
+                dealershipDTO.setReputation(d.getReputation());
+                dealershipDTO.setCapacity(d.getCapacity());
+                dealershipDTO.setHasService(d.isHasService());
+                dealershipDTO.setOffersTradeIn(d.isOffersTradeIn());
+                dealershipDTO.setAddress(d.getAddress());
+
+                carDealershipDTO.setDealershipDTO(dealershipDTO);
+
+                return carDealershipDTO;
+            }
+        }
+        return carDealershipDTO;
     }
 
     @Override

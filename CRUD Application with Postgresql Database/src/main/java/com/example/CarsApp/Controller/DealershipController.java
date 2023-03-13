@@ -1,5 +1,6 @@
 package com.example.CarsApp.Controller;
 
+import com.example.CarsApp.Model.DTOs.DealershipDTO;
 import com.example.CarsApp.Model.Dealership;
 import com.example.CarsApp.Service.DealershipService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,8 @@ public class DealershipController {
     private DealershipService dealershipService;
 
     @GetMapping("/dealerships")
-    public List<Dealership> fetchDealerships(){
-        return this.dealershipService.fetchDealershipList();
+    public List<DealershipDTO> fetchDealerships(){
+        return this.dealershipService.fetchDealershipDTOList();
     }
 
     @GetMapping("/dealerships/{dealershipID}")

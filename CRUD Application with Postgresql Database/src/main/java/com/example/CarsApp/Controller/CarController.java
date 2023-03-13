@@ -1,6 +1,8 @@
 package com.example.CarsApp.Controller;
 
 import com.example.CarsApp.Model.Car;
+import com.example.CarsApp.Model.DTOs.CarDealershipDTO;
+import com.example.CarsApp.Model.DTOs.CarDealershipIDDTO;
 import com.example.CarsApp.Service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +26,16 @@ public class CarController {
     @GetMapping("/dealerships/{dealershipID}/cars/{carID}")
     public Car one(@PathVariable("dealershipID") Long dealershipID, @PathVariable("carID") Long carID){
         return this.carService.one(dealershipID, carID);
+    }
+
+    @GetMapping("/cars")
+    public List<CarDealershipIDDTO> fetchCars(){
+        return this.carService.getAllCars();
+    }
+
+    @GetMapping("/cars/{carID}")
+    public CarDealershipDTO fetchCarByIdWithDealershipDTO(@PathVariable("carID") Long carID){
+        return this.carService.getOneCarWithDealershipObject(carID);
     }
 
     @PutMapping("/dealerships/{dealershipID}/cars/{carID}")
