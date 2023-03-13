@@ -5,6 +5,6 @@ Entities: Car, Dealership and Mechanic
 Relations:
   -> One-to-many between Dealership and Car
   
-Changes are kept in the database and loaded after the application is restarted.
+Tables and rows corresponding to entities are kept in the database and are visible after the application closes. Select queries also show real-time modifications made to the database tables' rows.
 
 HTML requests are sent using Postman.
