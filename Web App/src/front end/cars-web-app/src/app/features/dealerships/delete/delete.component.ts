@@ -13,8 +13,7 @@ export class DeleteComponent {
   constructor(private apiSvc: ApiService, private router:Router){}
   deleteDealership(){
     if(this.dealershipID){
-      this.apiSvc.deleteDealership(this.dealershipID);
-      console.log(this.dealershipID);
+      this.apiSvc.deleteDealership(this.dealershipID).subscribe(() => console.log("deleted"));
       this.router.navigateByUrl('dealerships');
     }
   }

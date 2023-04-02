@@ -27,7 +27,7 @@ export class ApiService {
     return this.http.put(`${this.baseUrl}dealerships/${dealershipID}`, dealership) as Observable<Dealerships>;
   }
 
-  deleteDealership(dealershipID:number){
+  deleteDealership(dealershipID:number):Observable<Object> {
     return this.http.delete(`${this.baseUrl}dealerships/${dealershipID}`);
   }
 }
