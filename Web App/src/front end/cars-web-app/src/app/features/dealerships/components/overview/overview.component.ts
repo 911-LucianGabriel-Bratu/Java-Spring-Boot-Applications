@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { ApiService } from 'src/app/common/service/services.service';
-import { Dealerships } from './models/dealerships.models';
+import { DealershipDTO } from './models/dealerships.models';
 
 @Component({
   selector: 'app-overview',
@@ -10,11 +10,11 @@ import { Dealerships } from './models/dealerships.models';
   styleUrls: ['./overview.component.css']
 })
 export class OverviewComponent implements OnInit {
-  dealerships: Dealerships[] = [];
+  dealerships: DealershipDTO[] = [];
 
   constructor(private apiSvc: ApiService, private router: Router)  {}
   ngOnInit(): void{
-      this.apiSvc.getDealerships().subscribe((result: Dealerships[]) => {
+      this.apiSvc.getDealerships().subscribe((result: DealershipDTO[]) => {
           this.dealerships = result;
       });
   }

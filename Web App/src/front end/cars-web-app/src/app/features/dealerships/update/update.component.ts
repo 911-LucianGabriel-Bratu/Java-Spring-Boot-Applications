@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/common/service/services.service';
-import { Dealerships, DealershipsDTO } from '../components/overview/models/dealerships.models';
+import { DealershipDTO, DealershipsDTO } from '../components/overview/models/dealerships.models';
 
 @Component({
   selector: 'app-update',

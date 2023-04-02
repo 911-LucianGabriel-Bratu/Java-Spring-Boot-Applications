@@ -1,4 +1,4 @@
-export interface Dealerships {
+export interface DealershipDTO {
     id: number;
     name: string;
     capacity: number;
@@ -15,5 +15,10 @@ export interface DealershipsDTO {
     reputation: number;
     hasService: boolean;
     offersTradeIn:boolean;
+}
+
+export interface DealershipStatisticDTO {
+    avgInventoryValue: number;
+    dealershipDTO: DealershipDTO;
 }
 

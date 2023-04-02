@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { ApiService } from 'src/app/common/service/services.service';
 
 @Component({
@@ -13,8 +14,11 @@ export class DeleteComponent {
   constructor(private apiSvc: ApiService, private router:Router){}
   deleteDealership(){
     if(this.dealershipID){
-      this.apiSvc.deleteDealership(this.dealershipID).subscribe(() => console.log("deleted"));
-      this.router.navigateByUrl('dealerships');
+      this.apiSvc.deleteDealership(this.dealershipID).subscribe(o => {
+        console.log(o);
+      }
+      ,(err) =>{console.log("Error!")}
+      );
     }
   }
 }
