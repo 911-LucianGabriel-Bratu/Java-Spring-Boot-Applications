@@ -44,5 +44,4 @@ public class Dealership {
     @OneToMany(mappedBy = "dealership", fetch = FetchType.LAZY,
     cascade = CascadeType.ALL)
     private List<Car> cars = new ArrayList<>();
-
 }

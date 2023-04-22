@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { ApiService } from 'src/app/common/service/services.service';
 import { DealershipDTO } from './models/dealerships.models';
@@ -12,26 +12,31 @@ import { DealershipDTO } from './models/dealerships.models';
 export class OverviewComponent implements OnInit {
   dealerships: DealershipDTO[] = [];
 
-  constructor(private apiSvc: ApiService, private router: Router)  {}
+  constructor(private apiSvc: ApiService, private router: Router, private changeDetectorRefs: ChangeDetectorRef)  {}
   ngOnInit(): void{
       this.apiSvc.getDealerships().subscribe((result: DealershipDTO[]) => {
           this.dealerships = result;
       });
   }
 
+  sortTableData(): void{
+    this.dealerships.sort((a,b)=>(a.capacity > b.capacity) ? 1: (a.capacity < b.capacity) ? -1:0);
+    this.changeDetectorRefs.detectChanges();
+  }
+
   goToAdd(){
-      this.router.navigateByUrl(`dealerships/add`);
-  }
+    this.router.navigateByUrl(`dealerships/add`);
+}
 
-  goToUpdate(){
-    this.router.navigateByUrl(`dealerships/update`);
-  }
+goToUpdate(id: number){
+  this.router.navigateByUrl(`dealerships/update/${id}`);
+}
 
-  goToDelete(){
-    this.router.navigateByUrl(`dealerships/delete`);
-  }
+goToDelete(id: number){
+  this.router.navigateByUrl(`dealerships/delete/${id}`);
+}
 
-  goToGetOne(id: number){
-    this.router.navigateByUrl(`dealerships/${id}`);
-  }
+goToGetOne(id: number){
+  this.router.navigateByUrl(`dealerships/${id}`);
+}
 }

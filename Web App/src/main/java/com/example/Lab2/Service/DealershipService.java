@@ -9,7 +9,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
+
+class SortByInv implements Comparator<DealershipStatisticDTO> {
+
+    public int compare(DealershipStatisticDTO dto1, DealershipStatisticDTO dto2){
+        if(dto1.getAvgInventoryValue() < dto2.getAvgInventoryValue()){
+            return 1;
+        }
+        else if(dto1.getAvgInventoryValue() > dto2.getAvgInventoryValue()){
+            return -1;
+        }
+        else{
+            return 0;
+        }
+    }
+}
 
 @Service
 public class DealershipService implements IDealershipService{
@@ -22,7 +40,7 @@ public class DealershipService implements IDealershipService{
     }
 
     public List<Dealership> fetchDealershipList(){
-        return  this.dealershipRepository.findAll();
+        return this.dealershipRepository.findAll();
     }
 
     @Override
@@ -40,7 +58,7 @@ public class DealershipService implements IDealershipService{
             dealershipDTO.setAddress(dealership.getAddress());
             dealershipDTOS.add(dealershipDTO);
         }
-        return dealershipDTOS;
+        return dealershipDTOS.stream().limit(100).collect(Collectors.toList());
     }
 
 
@@ -67,38 +85,38 @@ public class DealershipService implements IDealershipService{
     public List<DealershipStatisticDTO> fetchStatisticForDealershipsInventories() {
         List<DealershipStatisticDTO> dealershipStatisticDTOS = new ArrayList<>();
         List<Dealership> dealershipList = this.dealershipRepository.findAll();
+        int limit = 100;
         for(Dealership dealership : dealershipList){
-            double avg_value = 0;
-            int size = 0;
-            for(Car car: dealership.getCars()){
-                size += 1;
-                avg_value += car.getCarRetailPrice();
-            }
-            avg_value = avg_value/size;
-
-            DealershipDTO dealershipDTO = new DealershipDTO();
-            dealershipDTO.setId(dealership.getDealershipID());
-            dealershipDTO.setName(dealership.getName());
-            dealershipDTO.setReputation(dealership.getReputation());
-            dealershipDTO.setCapacity(dealership.getCapacity());
-            dealershipDTO.setHasService(dealership.isHasService());
-            dealershipDTO.setOffersTradeIn(dealership.isOffersTradeIn());
-            dealershipDTO.setAddress(dealership.getAddress());
-
-            dealershipStatisticDTOS.add(new DealershipStatisticDTO(avg_value, dealershipDTO));
-        }
-
-        for(int i = 0; i<dealershipStatisticDTOS.size()-1; i++){
-            for(int j = i+1; j<dealershipStatisticDTOS.size(); j++){
-                if(dealershipStatisticDTOS.get(i).getAvgInventoryValue() < dealershipStatisticDTOS.get(j).getAvgInventoryValue()){
-                    DealershipStatisticDTO statisticDTO = dealershipStatisticDTOS.get(i);
-                    dealershipStatisticDTOS.set(i, dealershipStatisticDTOS.get(j));
-                    dealershipStatisticDTOS.set(j, statisticDTO);
+            if(limit >= 0) {
+                double avg_value = 0;
+                int size = 0;
+                for (Car car : dealership.getCars()) {
+                    size += 1;
+                    avg_value += car.getCarRetailPrice();
                 }
+                avg_value = avg_value / size;
+
+                DealershipDTO dealershipDTO = new DealershipDTO();
+                dealershipDTO.setId(dealership.getDealershipID());
+                dealershipDTO.setName(dealership.getName());
+                dealershipDTO.setReputation(dealership.getReputation());
+                dealershipDTO.setCapacity(dealership.getCapacity());
+                dealershipDTO.setHasService(dealership.isHasService());
+                dealershipDTO.setOffersTradeIn(dealership.isOffersTradeIn());
+                dealershipDTO.setAddress(dealership.getAddress());
+
+                dealershipStatisticDTOS.add(new DealershipStatisticDTO(avg_value, dealershipDTO));
+
+                limit -= 1;
+            }
+            else{
+                break;
             }
         }
 
-        return dealershipStatisticDTOS;
+        Collections.sort(dealershipStatisticDTOS, new SortByInv());
+
+        return dealershipStatisticDTOS.stream().limit(100).collect(Collectors.toList());
     }
 
     @Override

@@ -8,7 +8,7 @@ import { DealershipDTO, DealershipsDTO, DealershipStatisticDTO } from 'src/app/f
 })
 export class ApiService {
 
-  baseUrl:string = "http://13.49.148.93/";
+  baseUrl:string = "http://localhost:80/";
 
   constructor(private http: HttpClient) { }
   getDealerships(): Observable<DealershipDTO[]>{

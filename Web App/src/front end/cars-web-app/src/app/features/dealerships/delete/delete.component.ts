@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ApiService } from 'src/app/common/service/services.service';
 
@@ -8,10 +8,18 @@ import { ApiService } from 'src/app/common/service/services.service';
   templateUrl: './delete.component.html',
   styleUrls: ['./delete.component.css']
 })
-export class DeleteComponent {
+export class DeleteComponent implements OnInit{
   dealershipID?:number;
 
-  constructor(private apiSvc: ApiService, private router:Router){}
+  constructor(private apiSvc: ApiService, private router:Router, private activatedRoute: ActivatedRoute){}
+
+  ngOnInit(): void {
+    this.activatedRoute.params.subscribe(params =>{
+        this.dealershipID = params['id'];
+        this.deleteDealership();
+    }) 
+  }
+
   deleteDealership(){
     if(this.dealershipID){
       this.apiSvc.deleteDealership(this.dealershipID).subscribe(o => {

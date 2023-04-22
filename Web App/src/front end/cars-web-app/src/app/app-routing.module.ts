@@ -26,11 +26,11 @@ const routes: Routes = [
     component: AddComponent
   },
   {
-    path: "dealerships/update",
+    path: "dealerships/update/:id",
     component: UpdateComponent
   },
   {
-    path: "dealerships/delete",
+    path: "dealerships/delete/:id",
     component: DeleteComponent
   },
   {

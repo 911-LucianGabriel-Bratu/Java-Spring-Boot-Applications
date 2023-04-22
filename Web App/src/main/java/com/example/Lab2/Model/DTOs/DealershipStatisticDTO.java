@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Comparator;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -13,7 +15,6 @@ import lombok.Setter;
 public class DealershipStatisticDTO {
     private double avgInventoryValue;
     private DealershipDTO dealershipDTO;
-
     @JsonIgnore
     public DealershipStatisticDTO getStatistic(){
         return this;

@@ -23,6 +23,8 @@ public class PerformsMaintenance {
 
     private String urgency;
 
+    private String description;
+
     @ManyToOne
     @JoinColumn(name = "mechanicID", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
