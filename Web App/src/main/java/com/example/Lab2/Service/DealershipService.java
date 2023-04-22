@@ -46,7 +46,13 @@ public class DealershipService implements IDealershipService{
     @Override
     public List<DealershipDTO> fetchDealershipDTOList() {
         List<DealershipDTO> dealershipDTOS = new ArrayList<>();
-        List<Dealership> dealershipList =  this.dealershipRepository.findAll();
+        long id_limit = 100;
+        List<Dealership> dealershipList =  new ArrayList<>();
+        while(id_limit > 0){
+            Dealership d = this.dealershipRepository.findById(id_limit).get();
+            dealershipList.add(d);
+            id_limit -= 1;
+        }
         for(Dealership dealership : dealershipList){
             DealershipDTO dealershipDTO = new DealershipDTO();
             dealershipDTO.setId(dealership.getDealershipID());
@@ -58,7 +64,7 @@ public class DealershipService implements IDealershipService{
             dealershipDTO.setAddress(dealership.getAddress());
             dealershipDTOS.add(dealershipDTO);
         }
-        return dealershipDTOS.stream().limit(100).collect(Collectors.toList());
+        return dealershipDTOS;
     }
 
 
@@ -84,7 +90,13 @@ public class DealershipService implements IDealershipService{
     @Override
     public List<DealershipStatisticDTO> fetchStatisticForDealershipsInventories() {
         List<DealershipStatisticDTO> dealershipStatisticDTOS = new ArrayList<>();
-        List<Dealership> dealershipList = this.dealershipRepository.findAll();
+        long id_limit = 100;
+        List<Dealership> dealershipList =  new ArrayList<>();
+        while(id_limit > 0){
+            Dealership d = this.dealershipRepository.findById(id_limit).get();
+            dealershipList.add(d);
+            id_limit -= 1;
+        }
         int limit = 100;
         for(Dealership dealership : dealershipList){
             if(limit >= 0) {
