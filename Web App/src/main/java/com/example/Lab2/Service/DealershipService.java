@@ -132,6 +132,44 @@ public class DealershipService implements IDealershipService{
     }
 
     @Override
+    public List<DealershipStatisticDTO> testFetchStatisticForDealershipsInventories() {
+        List<DealershipStatisticDTO> dealershipStatisticDTOS = new ArrayList<>();
+        List<Dealership> dealershipList =  this.dealershipRepository.findAll();
+        int limit = 100;
+        for(Dealership dealership : dealershipList){
+            if(limit >= 0) {
+                double avg_value = 0;
+                int size = 0;
+                for (Car car : dealership.getCars()) {
+                    size += 1;
+                    avg_value += car.getCarRetailPrice();
+                }
+                avg_value = avg_value / size;
+
+                DealershipDTO dealershipDTO = new DealershipDTO();
+                dealershipDTO.setId(dealership.getDealershipID());
+                dealershipDTO.setName(dealership.getName());
+                dealershipDTO.setReputation(dealership.getReputation());
+                dealershipDTO.setCapacity(dealership.getCapacity());
+                dealershipDTO.setHasService(dealership.isHasService());
+                dealershipDTO.setOffersTradeIn(dealership.isOffersTradeIn());
+                dealershipDTO.setAddress(dealership.getAddress());
+
+                dealershipStatisticDTOS.add(new DealershipStatisticDTO(avg_value, dealershipDTO));
+
+                limit -= 1;
+            }
+            else{
+                break;
+            }
+        }
+
+        Collections.sort(dealershipStatisticDTOS, new SortByInv());
+
+        return dealershipStatisticDTOS.stream().limit(100).collect(Collectors.toList());
+    }
+
+    @Override
     public void deleteDealership(Long dealershipID) {
         this.dealershipRepository.deleteById(dealershipID);
     }

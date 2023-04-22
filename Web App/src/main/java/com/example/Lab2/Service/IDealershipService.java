@@ -18,6 +18,7 @@ public interface IDealershipService {
     Dealership updateDealership(Dealership dealership, Long dealershipID);
 
     List<DealershipStatisticDTO> fetchStatisticForDealershipsInventories();
+    List<DealershipStatisticDTO> testFetchStatisticForDealershipsInventories();
     //delete
     void deleteDealership(Long dealershipID);
 }

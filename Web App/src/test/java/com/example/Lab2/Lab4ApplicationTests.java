@@ -103,7 +103,7 @@ class Lab4ApplicationTests {
 		carRepository.save(car2);
 		dealershipRepository.save(dealership2);
 
-		when(dealershipService.fetchStatisticForDealershipsInventories()).thenReturn(
+		when(dealershipService.testFetchStatisticForDealershipsInventories()).thenReturn(
 				Stream.of(new DealershipStatisticDTO(
 						12000,
 						dealershipDTO1
