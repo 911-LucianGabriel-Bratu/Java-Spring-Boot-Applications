@@ -27,9 +27,29 @@ public class DealershipController {
         return this.dealershipService.fetchDealershipDTOList();
     }
 
+    @GetMapping("/dealerships/count")
+    public long getDealershipCount(){
+        return this.dealershipService.getDealershipCount();
+    }
+
+    @GetMapping("/dealerships/paginated/{pageNr}")
+    public List<DealershipDTO> fetchDealershipsPaginated(@PathVariable("pageNr") int pageNr){
+        return this.dealershipService.fetchDealershipsPaginated(pageNr);
+    }
+
+    @GetMapping("dealerships/avgInventory/paginated/{pageNr}")
+    public List<DealershipStatisticDTO> fetchPaginatedStatisticForDealershipsInventories(@PathVariable("pageNr") int pageNr){
+        return this.dealershipService.fetchPaginatedStatisticForDealershipsInventories(pageNr);
+    }
+
     @GetMapping("/dealerships/{dealershipID}")
     public Dealership one(@PathVariable("dealershipID") Long dealershipID){
         return this.dealershipService.one(dealershipID);
+    }
+
+    @GetMapping("/dealerships/dto/{dealershipID}")
+    public DealershipDTO oneDTO(@PathVariable("dealershipID") Long dealershipID){
+        return this.dealershipService.oneDTO(dealershipID);
     }
 
     @GetMapping("/dealerships/filter/{filterValue}")

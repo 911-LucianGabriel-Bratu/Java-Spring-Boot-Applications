@@ -1,5 +1,6 @@
 package com.example.Lab2.Controller;
 
+import com.example.Lab2.Model.DTOs.MaintenanceDTO;
 import com.example.Lab2.Model.DTOs.NrCarsStatisticDTO;
 import com.example.Lab2.Model.Mechanic;
 import com.example.Lab2.Model.PerformsMaintenance;
@@ -19,9 +20,25 @@ public class MaintenanceController {
         return this.maintenanceService.fetchMaintenanceList();
     }
 
+    @GetMapping("/maintenance/paginated/{pageNr}")
+    public List<MaintenanceDTO> fetchMaintenanceListPaginated(@PathVariable("pageNr") int pageNr){
+        return this.maintenanceService.fetchMaintenanceListPaginated(pageNr);
+    }
+
+    @GetMapping("/maintenance/count")
+    public Long fetchMaintenanceCount(){
+        return this.maintenanceService.fetchMaintenanceCount();
+    }
+
+
     @GetMapping("/maintenance/{maintenanceID}")
     public PerformsMaintenance one(@PathVariable("maintenanceID") Long maintenanceID){
         return this.maintenanceService.one(maintenanceID);
+    }
+
+    @GetMapping("/maintenance/dto/{maintenanceID}")
+    public MaintenanceDTO oneDTO(@PathVariable("maintenanceID") Long maintenanceID){
+        return this.maintenanceService.oneDTO(maintenanceID);
     }
 
     @GetMapping("/maintenance/nrMechanicsStatistic")
@@ -40,8 +57,8 @@ public class MaintenanceController {
     }
 
     @PutMapping("/maintenance/{maintenanceID}")
-    public PerformsMaintenance updateMaintenance(@RequestBody PerformsMaintenance maintenance, @PathVariable("maintenanceID") Long maintenanceID){
-        return this.maintenanceService.updateMaintenance(maintenance, maintenanceID);
+    public PerformsMaintenance updateMaintenance(@RequestBody MaintenanceDTO maintenanceDTO, @PathVariable("maintenanceID") Long maintenanceID){
+        return this.maintenanceService.updateMaintenance(maintenanceDTO, maintenanceID);
     }
 
     @DeleteMapping("/maintenance/{maintenanceID}")

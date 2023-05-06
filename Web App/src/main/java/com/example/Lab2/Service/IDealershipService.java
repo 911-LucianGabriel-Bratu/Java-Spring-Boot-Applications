@@ -13,7 +13,14 @@ public interface IDealershipService {
     List<DealershipDTO> fetchDealershipDTOList();
 
     List<Dealership> fetchDealershipList();
+
+    List<DealershipDTO> fetchDealershipsPaginated(int pageNr);
     Dealership one(Long dealershipID);
+
+    DealershipDTO oneDTO(Long dealershipID);
+
+    List<DealershipStatisticDTO> fetchPaginatedStatisticForDealershipsInventories(int pageNr);
+    long getDealershipCount();
     //update
     Dealership updateDealership(Dealership dealership, Long dealershipID);
 

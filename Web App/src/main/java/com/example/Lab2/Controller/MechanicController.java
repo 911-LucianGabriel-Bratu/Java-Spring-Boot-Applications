@@ -1,5 +1,6 @@
 package com.example.Lab2.Controller;
 
+import com.example.Lab2.Model.DTOs.MechanicDTO;
 import com.example.Lab2.Model.Mechanic;
 import com.example.Lab2.Service.MechanicService;
 import jakarta.validation.Valid;
@@ -23,10 +24,26 @@ public class MechanicController {
         return this.mechanicService.fetchMechanicList();
     }
 
+    @GetMapping("/mechanics/paginated/{pageNr}")
+    public List<MechanicDTO> fetchMechanicListPaginated(@PathVariable("pageNr") int pageNr){
+        return this.mechanicService.fetchMechanicListPaginated(pageNr);
+    }
+
+    @GetMapping("/mechanics/count")
+    public long fetchMechanicCount(){
+        return this.mechanicService.fetchMechanicCount();
+    }
+
     @GetMapping("/mechanics/{mechanicID}")
     public Mechanic one(@PathVariable("mechanicID") Long mechanicID){
         return this.mechanicService.one(mechanicID);
     }
+
+    @GetMapping("/mechanics/dto/{mechanicID}")
+    public MechanicDTO oneDTO(@PathVariable("mechanicID") Long mechanicID){
+        return this.mechanicService.oneDTO(mechanicID);
+    }
+
 
     @PostMapping("/mechanics")
     public Mechanic saveMechanic(@Valid @RequestBody Mechanic mechanic){

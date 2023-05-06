@@ -1,0 +1,22 @@
+<h2>Add a car</h2>
+<form (submit)="addCar()">
+    <label for="carManufacturer">Manufacturer</label>
+    <input id = "carManufacturer" name = "carManufacturer" [(ngModel)]="carManufacturer">
+    <br><br>
+    <label for="carModel">Model</label>
+    <input id = "carModel" name = "carModel" [(ngModel)]="carModel">
+    <br><br>
+    <label for="carRetailPrice">RetailPrice</label>
+    <input id = "carRetailPrice" name = "carRetailPrice" [(ngModel)]="carRetailPrice">
+    <br><br>
+    <label for="carTopSpeed">TopSpeed</label>
+    <input id = "carTopSpeed" name = "carTopSpeed" [(ngModel)]="carTopSpeed">
+    <br><br>
+    <label for="carWeight">Weight</label>
+    <input id = "carWeight" name = "carWeight" [(ngModel)]="carWeight">
+    <br><br>
+    <label for="dealershipID">DealershipID</label>
+    <input id = "dealershipID" name = "dealershipID" [(ngModel)]="dealershipID">
+    <br><br>
+    <button type="submit">Submit</button>
+</form>

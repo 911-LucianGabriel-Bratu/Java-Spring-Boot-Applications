@@ -15,8 +15,16 @@ export class ApiService {
     return this.http.get(`${this.baseUrl}dealerships`) as Observable<DealershipDTO[]>;
   }
 
+  getDealershipCount(): Observable<number> {
+    return this.http.get(`${this.baseUrl}dealerships/count`) as Observable<number>;
+  }
+
+  getPaginatedDealerships(id: number): Observable<DealershipDTO[]>{
+    return this.http.get(`${this.baseUrl}dealerships/paginated/${id}`) as Observable<DealershipDTO[]>;
+  }
+
   getDealership(id: number): Observable<DealershipDTO>{
-    return this.http.get(`${this.baseUrl}dealerships/${id}`) as Observable<DealershipDTO>;
+    return this.http.get(`${this.baseUrl}dealerships/dto/${id}`) as Observable<DealershipDTO>;
   }
 
   addDealership(dealership: DealershipsDTO): Observable<DealershipsDTO>{

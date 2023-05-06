@@ -1,6 +1,7 @@
 package com.example.Lab2.Service;
 
 import com.example.Lab2.Model.Car;
+import com.example.Lab2.Model.DTOs.CarDTO;
 import com.example.Lab2.Model.DTOs.CarDealershipDTO;
 import com.example.Lab2.Model.DTOs.CarDealershipIDDTO;
 import com.example.Lab2.Model.DTOs.DealershipDTO;
@@ -47,6 +48,11 @@ public class CarService implements ICarService{
         return null;
     }
 
+    @Override
+    public Long fetchCarCount() {
+        return this.carRepository.count();
+    }
+
     public List<CarDealershipIDDTO> getAllCars(){
         List<CarDealershipIDDTO> carDealershipIDDTOList = new ArrayList<>();
 
@@ -71,6 +77,56 @@ public class CarService implements ICarService{
         }
 
         return carDealershipIDDTOList;
+    }
+
+    @Override
+    public CarDTO oneDTO(long carID) {
+        Car car = this.carRepository.findById(carID).get();
+        CarDTO carDTO = new CarDTO();
+
+        carDTO.setCarID(car.getCarID());
+        carDTO.setCarManufacturer(car.getCarManufacturer());
+        carDTO.setCarModel(car.getCarModel());
+        carDTO.setCarTopSpeed(car.getCarTopSpeed());
+        carDTO.setCarRetailPrice(car.getCarRetailPrice());
+        carDTO.setCarWeight(car.getCarWeight());
+        carDTO.setDealershipID(car.getDealership().getDealershipID());
+
+        return carDTO;
+    }
+
+    @Override
+    public List<CarDTO> getAllCarsPaginated(int pageNr) {
+        long start_id = (pageNr-1) * 10 + 1;
+        long max_id = start_id + 10;
+        List<Car> carList = new ArrayList<>();
+        List<CarDTO> carDTOList = new ArrayList<>();
+
+        while(start_id < max_id){
+            try{
+                Car car = this.carRepository.findById(start_id).get();
+                carList.add(car);
+                start_id += 1;
+            }
+            catch (java.util.NoSuchElementException e){
+                start_id += 1;
+            }
+        }
+
+        for(Car car: carList){
+            CarDTO carDTO = new CarDTO();
+
+            carDTO.setCarID(car.getCarID());
+            carDTO.setCarManufacturer(car.getCarManufacturer());
+            carDTO.setCarModel(car.getCarModel());
+            carDTO.setCarTopSpeed(car.getCarTopSpeed());
+            carDTO.setCarRetailPrice(car.getCarRetailPrice());
+            carDTO.setCarWeight(car.getCarWeight());
+            carDTO.setDealershipID(car.getDealership().getDealershipID());
+
+            carDTOList.add(carDTO);
+        }
+        return carDTOList;
     }
 
     @Override
@@ -129,9 +185,7 @@ public class CarService implements ICarService{
     }
 
     @Override
-    public void deleteCar(Long dealershipID, Long carID) {
-        Dealership dealership = dealershipRepository.findById(dealershipID).get();
-
+    public void deleteCar(Long carID) {
         this.carRepository.deleteById(carID);
     }
 }

@@ -1,0 +1,27 @@
+<h1>Mechanic</h1>
+
+<ng-container *ngIf="mechanic">
+
+    
+    <table>
+      <thead>
+        <tr>
+          <th class="headerText">#</th>
+          <th class="headerText">Name</th>
+          <th class="headerText">CNP</th>
+          <th class="headerText">Address</th>
+          <th class="headerText">Experience</th>
+          <th class="headerText">FavouriteCarBrand</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="cellText">{{ mechanic['id'] }}</td>
+          <td class="cellText">{{ mechanic['name'] }}</td>
+          <td class="cellText">{{ mechanic['cnp'] }}</td>
+          <td class="cellText">{{ mechanic['address'] }}</td>
+          <td class="cellText">{{ mechanic['experience'] }}</td>
+          <td class="cellText">{{ mechanic['favouriteCarBrand'] }}</td>
+        </tr>
+      </tbody>
+    </table>

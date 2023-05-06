@@ -1,0 +1,29 @@
+<h1>Maintenance</h1>
+
+<ng-container *ngIf="car">
+
+    
+    <table>
+      <thead>
+        <tr>
+            <th class="headerText">#</th>
+            <th class="headerText">Manufacturer</th>
+            <th class="headerText">Model</th>
+            <th class="headerText">RetailPrice</th>
+            <th class="headerText">TopSpeed</th>
+            <th class="headerText">Weight</th>
+            <th class="headerText">DealershipID</th>
+          </tr>
+      </thead>
+      <tbody>
+        <tr>
+            <td class="cellText">{{ car['carID'] }}</td>
+            <td class="cellText">{{ car['carManufacturer'] }}</td>
+            <td class="cellText">{{ car['carModel'] }}</td>
+            <td class="cellText">{{ car['carRetailPrice'] }}</td>
+            <td class="cellText">{{ car['carTopSpeed'] }}</td>
+            <td class="cellText">{{ car['carWeight'] }}</td>
+            <td class="cellText"><a (click)="goToGetOneDealership(car.dealershipID)">{{ car['dealershipID'] }}</a></td>
+        </tr>
+      </tbody>
+    </table>

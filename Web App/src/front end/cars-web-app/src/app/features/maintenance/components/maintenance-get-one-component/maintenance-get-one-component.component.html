@@ -1,0 +1,27 @@
+<h1>Maintenance</h1>
+
+<ng-container *ngIf="maintenance">
+
+    
+    <table>
+      <thead>
+        <tr>
+            <th class="headerText">#</th>
+            <th class="headerText">Difficulty</th>
+            <th class="headerText">Urgency</th>
+            <th class="headerText">Description</th>
+            <th class="headerText">MechanicID</th>
+            <th class="headerText">CarID</th>
+          </tr>
+      </thead>
+      <tbody>
+        <tr>
+            <td class="cellText">{{ maintenance['maintenanceID'] }}</td>
+            <td class="cellText">{{ maintenance['difficulty'] }}</td>
+            <td class="cellText">{{ maintenance['urgency'] }}</td>
+            <td class="cellText">{{ maintenance['description'] }}</td>
+            <td class="cellText"><a (click)="goToGetOneMechanic(maintenance.mechanicID)">{{ maintenance['mechanicID'] }}</a></td>
+            <td class="cellText"><a (click)="goToGetOneCar(maintenance.carID)">{{ maintenance['carID'] }}</a></td>
+        </tr>
+      </tbody>
+    </table>

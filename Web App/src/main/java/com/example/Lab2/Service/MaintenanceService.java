@@ -1,6 +1,7 @@
 package com.example.Lab2.Service;
 
 import com.example.Lab2.Model.Car;
+import com.example.Lab2.Model.DTOs.MaintenanceDTO;
 import com.example.Lab2.Model.DTOs.NrCarsStatisticDTO;
 import com.example.Lab2.Model.Dealership;
 import com.example.Lab2.Model.Mechanic;
@@ -27,10 +28,55 @@ public class MaintenanceService implements IMaintenanceService{
     public List<PerformsMaintenance> fetchMaintenanceList() {
         return this.maintenanceRepository.findAll();
     }
+    @Override
+    public MaintenanceDTO oneDTO(Long maintenanceID){
+        PerformsMaintenance maintenance = this.maintenanceRepository.findById(maintenanceID).get();
+        MaintenanceDTO maintenanceDTO = new MaintenanceDTO();
+
+        maintenanceDTO.setMaintenanceID(maintenance.getMaintenanceID());
+        maintenanceDTO.setDescription(maintenance.getDescription());
+        maintenanceDTO.setDifficulty(maintenance.getDifficulty());
+        maintenanceDTO.setUrgency(maintenance.getUrgency());
+        maintenanceDTO.setMechanicID(maintenance.getMechanic().getMechanicID());
+        maintenanceDTO.setCarID(maintenance.getCar().getCarID());
+
+        return maintenanceDTO;
+    }
+
+    public List<MaintenanceDTO> fetchMaintenanceListPaginated(int pageNr){
+        long start_id = (pageNr-1) * 10 + 1;
+        long max_id = start_id + 10;
+        List<MaintenanceDTO> maintenanceDTOList = new ArrayList<>();
+
+        while(start_id < max_id){
+            try{
+                PerformsMaintenance maintenance = maintenanceRepository.findById(start_id).get();
+                MaintenanceDTO maintenanceDTO = new MaintenanceDTO();
+                maintenanceDTO.setMaintenanceID(maintenance.getMaintenanceID());
+                maintenanceDTO.setDescription(maintenance.getDescription());
+                maintenanceDTO.setDifficulty(maintenance.getDifficulty());
+                maintenanceDTO.setUrgency(maintenance.getUrgency());
+                maintenanceDTO.setMechanicID(maintenance.getMechanic().getMechanicID());
+                maintenanceDTO.setCarID(maintenance.getCar().getCarID());
+                maintenanceDTOList.add(maintenanceDTO);
+                start_id+=1;
+            }
+            catch (java.util.NoSuchElementException e){
+                start_id +=1;
+            }
+        }
+
+        return maintenanceDTOList;
+    }
 
     @Override
     public PerformsMaintenance one(Long maintenanceID) {
         return this.maintenanceRepository.findById(maintenanceID).get();
+    }
+
+    @Override
+    public Long fetchMaintenanceCount(){
+        return this.maintenanceRepository.count();
     }
 
     @Override
@@ -54,10 +100,18 @@ public class MaintenanceService implements IMaintenanceService{
     }
 
     @Override
-    public PerformsMaintenance updateMaintenance(PerformsMaintenance maintenance, Long maintenanceID) {
+    public PerformsMaintenance updateMaintenance(MaintenanceDTO maintenance, Long maintenanceID) {
         PerformsMaintenance maintenance1 = this.maintenanceRepository.findById(maintenanceID).get();
+
+        Car car = this.carRepository.findById(maintenance.getCarID()).get();
+        Mechanic mechanic = this.mechanicRepository.findById(maintenance.getMechanicID()).get();
+
         maintenance1.setDifficulty(maintenance.getDifficulty());
         maintenance1.setUrgency(maintenance.getUrgency());
+        maintenance1.setDescription(maintenance.getDescription());
+        maintenance1.setCar(car);
+        maintenance1.setMechanic(mechanic);
+
         return this.maintenanceRepository.save(maintenance1);
     }
 

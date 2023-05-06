@@ -28,7 +28,7 @@ export class AddComponent {
           offersTradeIn: this.offersTradeIn
         }
         this.apiSvc.addDealership(dealership).subscribe(result => {
-          this.router.navigateByUrl('dealerships');
+          this.router.navigateByUrl('dealerships/paginated/1');
         }
         ,(err) =>{alert("Error!")}
         );

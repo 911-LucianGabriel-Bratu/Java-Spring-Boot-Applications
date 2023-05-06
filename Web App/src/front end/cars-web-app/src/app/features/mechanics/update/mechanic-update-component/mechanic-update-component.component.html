@@ -1,0 +1,22 @@
+<h2>Update a mechanic</h2>
+
+<ng-container *ngIf="mechanicIDDTO">
+<form (submit)="updateMechanic()">
+    <label for="name">Name</label>
+    <input id = "name" name = "name" [(ngModel)]="name">
+    <br><br>
+    <label for="cnp">CNP</label>
+    <input id = "cnp" name = "cnp" [(ngModel)]="cnp">
+    <br><br>
+    <label for="address">Address</label>
+    <input id = "address" name = "address" [(ngModel)]="address">
+    <br><br>
+    <label for="experience">Experience</label>
+    <input id = "experience" name = "experience" [(ngModel)]="experience">
+    <br><br>
+    <label for="favouriteCarBrand">FavouriteCarBrand</label>
+    <input id = "favouriteCarBrand" name = "favouriteCarBrand" [(ngModel)]="favouriteCarBrand">
+    <br><br>
+    <button type="submit">Submit</button>
+</form>
+</ng-container>

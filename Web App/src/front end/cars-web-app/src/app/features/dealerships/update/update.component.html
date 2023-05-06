@@ -3,22 +3,22 @@
 <ng-container *ngIf="dealershipDTO">
 <form (submit)="updateDealership()">
     <label for="name">Name</label>
-    <input value = {{this.dealershipDTO.name}} id = "name" name = "name" [(ngModel)]="name">
+    <input id = "name" name = "name" [(ngModel)]="name">
     <br><br>
     <label for="capacity">Capacity</label>
-    <input value = {{this.dealershipDTO.capacity}}  id = "capacity" name = "capacity" [(ngModel)]="capacity">
+    <input id = "capacity" name = "capacity" [(ngModel)]="capacity">
     <br><br>
     <label for="address">Address</label>
-    <input value = {{this.dealershipDTO.address}} id = "address" name = "address" [(ngModel)]="address">
+    <input id = "address" name = "address" [(ngModel)]="address">
     <br><br>
     <label for="reputation">Reputation</label>
-    <input value = {{this.dealershipDTO.reputation}}  id = "reputation" name = "reputation" [(ngModel)]="reputation">
+    <input id = "reputation" name = "reputation" [(ngModel)]="reputation">
     <br><br>
     <label for="hasService">HasService</label>
-    <input value = {{this.dealershipDTO.hasService}} id = "hasService" name = "hasService" [(ngModel)]="hasService">
+    <input id = "hasService" name = "hasService" [(ngModel)]="hasService">
     <br><br>
     <label for="offersTradeIn">OffersTradeIn</label>
-    <input value = {{this.dealershipDTO.offersTradeIn}} id = "offersTradeIn" name = "offersTradeIn" [(ngModel)]="offersTradeIn">
+    <input id = "offersTradeIn" name = "offersTradeIn" [(ngModel)]="offersTradeIn">
     <br><br>
     <button type="submit">Submit</button>
 </form>

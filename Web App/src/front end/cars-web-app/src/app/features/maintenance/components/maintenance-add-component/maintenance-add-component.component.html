@@ -1,0 +1,19 @@
+<h2>Add maintenance</h2>
+<form (submit)="addMaintenance()">
+    <label for="difficulty">Difficulty</label>
+    <input id = "difficulty" name = "difficulty" [(ngModel)]="difficulty">
+    <br><br>
+    <label for="urgency">Urgency</label>
+    <input id = "urgency" name = "urgency" [(ngModel)]="urgency">
+    <br><br>
+    <label for="description">Description</label>
+    <input id = "description" name = "description" [(ngModel)]="description">
+    <br><br>
+    <label for="mechanicID">MechanicID</label>
+    <input id = "mechanicID" name = "mechanicID" [(ngModel)]="mechanicID">
+    <br><br>
+    <label for="carID">CarID</label>
+    <input id = "carID" name = "carID" [(ngModel)]="carID">
+    <br><br>
+    <button type="submit">Submit</button>
+</form>

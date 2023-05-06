@@ -1,6 +1,7 @@
 package com.example.Lab2.Controller;
 
 import com.example.Lab2.Model.Car;
+import com.example.Lab2.Model.DTOs.CarDTO;
 import com.example.Lab2.Model.DTOs.CarDealershipDTO;
 import com.example.Lab2.Model.DTOs.CarDealershipIDDTO;
 import com.example.Lab2.Service.CarService;
@@ -41,6 +42,20 @@ public class CarController {
         return this.carService.getAllCars();
     }
 
+    @GetMapping("/cars/paginated/{pageNr}")
+    public List<CarDTO> fetchAllCarsPaginated(@PathVariable("pageNr") int pageNr) {
+        return this.carService.getAllCarsPaginated(pageNr);
+    }
+    @GetMapping("/cars/count")
+    public long fetchCarCount() {
+        return this.carService.fetchCarCount();
+    }
+
+    @GetMapping("/cars/dto/{carID}")
+    public CarDTO oneDTO(@PathVariable("carID") long carID) {
+        return this.carService.oneDTO(carID);
+    }
+
     @GetMapping("/cars/{carID}")
     public CarDealershipDTO fetchCarByIdWithDealershipDTO(@PathVariable("carID") Long carID) {
         return this.carService.getOneCarWithDealershipObject(carID);
@@ -52,9 +67,9 @@ public class CarController {
         return this.carService.updateCar(car, dealershipID, carID);
     }
 
-    @DeleteMapping("/dealerships/{dealershipID}/cars/{id}")
-    public String deleteCar(@PathVariable("dealershipID") Long dealershipID, @PathVariable("id") Long carID) {
-        this.carService.deleteCar(dealershipID, carID);
+    @DeleteMapping("cars/{id}")
+    public String deleteCar(@PathVariable("id") Long carID) {
+        this.carService.deleteCar(carID);
         return "Car successfully deleted";
     }
 

@@ -16,7 +16,7 @@ import org.hibernate.annotations.OnDeleteAction;
 @Builder
 public class PerformsMaintenance {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long maintenanceID;
 
     private String difficulty;

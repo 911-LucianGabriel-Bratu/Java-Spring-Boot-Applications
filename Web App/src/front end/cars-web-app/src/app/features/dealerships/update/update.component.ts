@@ -34,7 +34,7 @@ export class UpdateComponent implements OnInit{
           offersTradeIn: this.offersTradeIn
         }
         this.apiSvc.updateDealership(dealership, this.dealershipID).subscribe(result => {
-          this.router.navigateByUrl('dealerships');
+          this.router.navigateByUrl('dealerships/paginated/1');
         }
         ,(err) =>{alert(err), console.log(err)}
         );
@@ -46,6 +46,12 @@ export class UpdateComponent implements OnInit{
       this.activatedRoute.params.subscribe(params => {
         this.apiSvc.getDealership(params['id']).subscribe((dealership: DealershipDTO) =>{
           this.dealershipDTO = dealership;
+          this.name = this.dealershipDTO.name;
+          this.capacity = this.dealershipDTO.capacity;
+          this.address = this.dealershipDTO.address;
+          this.reputation = this.dealershipDTO.reputation;
+          this.hasService = this.dealershipDTO.hasService;
+          this.offersTradeIn = this.dealershipDTO.offersTradeIn;
         })
       });
     }

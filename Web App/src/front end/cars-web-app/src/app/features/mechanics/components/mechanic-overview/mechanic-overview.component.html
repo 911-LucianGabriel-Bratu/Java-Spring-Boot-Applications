@@ -1,0 +1,204 @@
+<h1>Mechanics</h1>
+<ng-container *ngIf="mechanics">
+<button (click)="goToAdd()">Add mechanic</button>
+<br>
+<ul class="paginationList">
+  <li><a (click)="goToPaginated(1)">1</a></li>
+  <li><a (click)="goToPaginated(2)">2</a></li>
+  <li><a (click)="goToPaginated(3)">3</a></li>
+  <li><a (click)="goToPaginated(4)">4</a></li>
+  <li><a (click)="goToPaginated(5)">5</a></li>
+
+  <li *ngIf="pageNumber==1"><a (click)="goToPaginated(6)">6</a></li>
+
+  <li *ngIf="pageNumber==2"><a (click)="goToPaginated(6)">6</a></li>
+  <li *ngIf="pageNumber==2"><a (click)="goToPaginated(7)">7</a></li>
+
+  <li *ngIf="pageNumber==3"><a (click)="goToPaginated(6)">6</a></li>
+  <li *ngIf="pageNumber==3"><a (click)="goToPaginated(7)">7</a></li>
+  <li *ngIf="pageNumber==3"><a (click)="goToPaginated(8)">8</a></li>
+
+  <li *ngIf="pageNumber==4"><a (click)="goToPaginated(6)">6</a></li>
+  <li *ngIf="pageNumber==4"><a (click)="goToPaginated(7)">7</a></li>
+  <li *ngIf="pageNumber==4"><a (click)="goToPaginated(8)">8</a></li>
+  <li *ngIf="pageNumber==4"><a (click)="goToPaginated(9)">9</a></li>
+
+  <li *ngIf="pageNumber==5"><a (click)="goToPaginated(6)">6</a></li>
+  <li *ngIf="pageNumber==5"><a (click)="goToPaginated(7)">7</a></li>
+  <li *ngIf="pageNumber==5"><a (click)="goToPaginated(8)">8</a></li>
+  <li *ngIf="pageNumber==5"><a (click)="goToPaginated(9)">9</a></li>
+  <li *ngIf="pageNumber==5"><a (click)="goToPaginated(10)">10</a></li>
+
+  <li *ngIf="pageNumber==6"><a (click)="goToPaginated(6)">6</a></li>
+  <li *ngIf="pageNumber==6"><a (click)="goToPaginated(7)">7</a></li>
+  <li *ngIf="pageNumber==6"><a (click)="goToPaginated(8)">8</a></li>
+  <li *ngIf="pageNumber==6"><a (click)="goToPaginated(9)">9</a></li>
+  <li *ngIf="pageNumber==6"><a (click)="goToPaginated(10)">10</a></li>
+  <li *ngIf="pageNumber==6"><a (click)="goToPaginated(11)">11</a></li>
+
+  <li *ngIf="pageNumber==7"><a (click)="goToPaginated(6)">6</a></li>
+  <li *ngIf="pageNumber==7"><a (click)="goToPaginated(7)">7</a></li>
+  <li *ngIf="pageNumber==7"><a (click)="goToPaginated(8)">8</a></li>
+  <li *ngIf="pageNumber==7"><a (click)="goToPaginated(9)">9</a></li>
+  <li *ngIf="pageNumber==7"><a (click)="goToPaginated(10)">10</a></li>
+  <li *ngIf="pageNumber==7"><a (click)="goToPaginated(11)">11</a></li>
+  <li *ngIf="pageNumber==7"><a (click)="goToPaginated(12)">12</a></li>
+
+  <li *ngIf="pageNumber==8"><a (click)="goToPaginated(6)">6</a></li>
+  <li *ngIf="pageNumber==8"><a (click)="goToPaginated(7)">7</a></li>
+  <li *ngIf="pageNumber==8"><a (click)="goToPaginated(8)">8</a></li>
+  <li *ngIf="pageNumber==8"><a (click)="goToPaginated(9)">9</a></li>
+  <li *ngIf="pageNumber==8"><a (click)="goToPaginated(10)">10</a></li>
+  <li *ngIf="pageNumber==8"><a (click)="goToPaginated(11)">11</a></li>
+  <li *ngIf="pageNumber==8"><a (click)="goToPaginated(12)">12</a></li>
+  <li *ngIf="pageNumber==8"><a (click)="goToPaginated(13)">13</a></li>
+
+  <li *ngIf="pageNumber==9"><a (click)="goToPaginated(6)">6</a></li>
+  <li *ngIf="pageNumber==9"><a (click)="goToPaginated(7)">7</a></li>
+  <li *ngIf="pageNumber==9"><a (click)="goToPaginated(8)">8</a></li>
+  <li *ngIf="pageNumber==9"><a (click)="goToPaginated(9)">9</a></li>
+  <li *ngIf="pageNumber==9"><a (click)="goToPaginated(10)">10</a></li>
+  <li *ngIf="pageNumber==9"><a (click)="goToPaginated(11)">11</a></li>
+  <li *ngIf="pageNumber==9"><a (click)="goToPaginated(12)">12</a></li>
+  <li *ngIf="pageNumber==9"><a (click)="goToPaginated(13)">13</a></li>
+  <li *ngIf="pageNumber==9"><a (click)="goToPaginated(14)">14</a></li>
+
+  <li *ngIf="pageNumber==10"><a (click)="goToPaginated(6)">6</a></li>
+  <li *ngIf="pageNumber==10"><a (click)="goToPaginated(7)">7</a></li>
+  <li *ngIf="pageNumber==10"><a (click)="goToPaginated(8)">8</a></li>
+  <li *ngIf="pageNumber==10"><a (click)="goToPaginated(9)">9</a></li>
+  <li *ngIf="pageNumber==10"><a (click)="goToPaginated(10)">10</a></li>
+  <li *ngIf="pageNumber==10"><a (click)="goToPaginated(11)">11</a></li>
+  <li *ngIf="pageNumber==10"><a (click)="goToPaginated(12)">12</a></li>
+  <li *ngIf="pageNumber==10"><a (click)="goToPaginated(13)">13</a></li>
+  <li *ngIf="pageNumber==10"><a (click)="goToPaginated(14)">14</a></li>
+  <li *ngIf="pageNumber==10"><a (click)="goToPaginated(15)">15</a></li>
+
+  
+  <li *ngIf="pageNumber!>10 && pageNumber!<maxPages! - 0 -10">...</li>
+
+  <li *ngIf="pageNumber!>10 && pageNumber!<maxPages! - 0 -10"><a (click)="goToPaginated(pageNumber!-5)">{{pageNumber!-5}}</a></li>
+  <li *ngIf="pageNumber!>10 && pageNumber!<maxPages! - 0 -10"><a (click)="goToPaginated(pageNumber!-4)">{{pageNumber!-4}}</a></li>
+  <li *ngIf="pageNumber!>10 && pageNumber!<maxPages! - 0 -10"><a (click)="goToPaginated(pageNumber!-3)">{{pageNumber!-3}}</a></li>
+  <li *ngIf="pageNumber!>10 && pageNumber!<maxPages! - 0 -10"><a (click)="goToPaginated(pageNumber!-2)">{{pageNumber!-2}}</a></li>
+  <li *ngIf="pageNumber!>10 && pageNumber!<maxPages! - 0 -10"><a (click)="goToPaginated(pageNumber!-1)">{{pageNumber!-1}}</a></li>
+  <li *ngIf="pageNumber!>10 && pageNumber!<maxPages! - 0 -10"><a (click)="goToPaginated(pageNumber!)">{{pageNumber!}}</a></li>
+  <li *ngIf="pageNumber!>10 && pageNumber!<maxPages! - 0 -10"><a (click)="goToPaginated(pageNumber!-0+1)">{{pageNumber!-0+1}}</a></li>
+  <li *ngIf="pageNumber!>10 && pageNumber!<maxPages! - 0 -10"><a (click)="goToPaginated(pageNumber!-0+2)">{{pageNumber!-0+2}}</a></li>
+  <li *ngIf="pageNumber!>10 && pageNumber!<maxPages! - 0 -10"><a (click)="goToPaginated(pageNumber!-0+3)">{{pageNumber!-0+3}}</a></li>
+  <li *ngIf="pageNumber!>10 && pageNumber!<maxPages! - 0 -10"><a (click)="goToPaginated(pageNumber!-0+4)">{{pageNumber!-0+4}}</a></li>
+  <li *ngIf="pageNumber!>10 && pageNumber!<maxPages! - 0 -10"><a (click)="goToPaginated(pageNumber!-0+5)">{{pageNumber!-0+5}}</a></li>
+
+  <li>...</li>
+
+  <li *ngIf="pageNumber==maxPages! - 0 - 10"><a (click)="goToPaginated(maxPages! - 0 - 16)">{{maxPages! - 0 - 16}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 10"><a (click)="goToPaginated(maxPages! - 0 - 15)">{{maxPages! - 0 - 15}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 10"><a (click)="goToPaginated(maxPages! - 0 - 14)">{{maxPages! - 0 - 14}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 10"><a (click)="goToPaginated(maxPages! - 0 - 13)">{{maxPages! - 0 - 13}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 10"><a (click)="goToPaginated(maxPages! - 0 - 12)">{{maxPages! - 0 - 12}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 10"><a (click)="goToPaginated(maxPages! - 0 - 11)">{{maxPages! - 0 - 11}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 10"><a (click)="goToPaginated(maxPages! - 0 - 10)">{{maxPages! - 0 - 10}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 10"><a (click)="goToPaginated(maxPages! - 0 - 9)">{{maxPages! - 0 - 9}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 10"><a (click)="goToPaginated(maxPages! - 0 - 8)">{{maxPages! - 0 - 8}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 10"><a (click)="goToPaginated(maxPages! - 0 - 7)">{{maxPages! - 0 - 7}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 10"><a (click)="goToPaginated(maxPages! - 0 - 6)">{{maxPages! - 0 - 6}}</a></li>
+
+  <li *ngIf="pageNumber==maxPages! - 0 - 9"><a (click)="goToPaginated(maxPages! - 0 - 15)">{{maxPages! - 0 - 15}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 9"><a (click)="goToPaginated(maxPages! - 0 - 14)">{{maxPages! - 0 - 14}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 9"><a (click)="goToPaginated(maxPages! - 0 - 13)">{{maxPages! - 0 - 13}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 9"><a (click)="goToPaginated(maxPages! - 0 - 12)">{{maxPages! - 0 - 12}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 9"><a (click)="goToPaginated(maxPages! - 0 - 11)">{{maxPages! - 0 - 11}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 9"><a (click)="goToPaginated(maxPages! - 0 - 10)">{{maxPages! - 0 - 10}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 9"><a (click)="goToPaginated(maxPages! - 0 - 9)">{{maxPages! - 0 - 9}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 9"><a (click)="goToPaginated(maxPages! - 0 - 8)">{{maxPages! - 0 - 8}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 9"><a (click)="goToPaginated(maxPages! - 0 - 7)">{{maxPages! - 0 - 7}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 9"><a (click)="goToPaginated(maxPages! - 0 - 6)">{{maxPages! - 0 - 6}}</a></li>
+
+  <li *ngIf="pageNumber==maxPages! - 0 - 8"><a (click)="goToPaginated(maxPages! - 0 - 14)">{{maxPages! - 0 - 14}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 8"><a (click)="goToPaginated(maxPages! - 0 - 13)">{{maxPages! - 0 - 13}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 8"><a (click)="goToPaginated(maxPages! - 0 - 12)">{{maxPages! - 0 - 12}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 8"><a (click)="goToPaginated(maxPages! - 0 - 11)">{{maxPages! - 0 - 11}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 8"><a (click)="goToPaginated(maxPages! - 0 - 10)">{{maxPages! - 0 - 10}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 8"><a (click)="goToPaginated(maxPages! - 0 - 9)">{{maxPages! - 0 - 9}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 8"><a (click)="goToPaginated(maxPages! - 0 - 8)">{{maxPages! - 0 - 8}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 8"><a (click)="goToPaginated(maxPages! - 0 - 7)">{{maxPages! - 0 - 7}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 8"><a (click)="goToPaginated(maxPages! - 0 - 6)">{{maxPages! - 0 - 6}}</a></li>
+
+  <li *ngIf="pageNumber==maxPages! - 0 - 7"><a (click)="goToPaginated(maxPages! - 0 - 13)">{{maxPages! - 0 - 13}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 7"><a (click)="goToPaginated(maxPages! - 0 - 12)">{{maxPages! - 0 - 12}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 7"><a (click)="goToPaginated(maxPages! - 0 - 11)">{{maxPages! - 0 - 11}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 7"><a (click)="goToPaginated(maxPages! - 0 - 10)">{{maxPages! - 0 - 10}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 7"><a (click)="goToPaginated(maxPages! - 0 - 9)">{{maxPages! - 0 - 9}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 7"><a (click)="goToPaginated(maxPages! - 0 - 8)">{{maxPages! - 0 - 8}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 7"><a (click)="goToPaginated(maxPages! - 0 - 7)">{{maxPages! - 0 - 7}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 7"><a (click)="goToPaginated(maxPages! - 0 - 6)">{{maxPages! - 0 - 6}}</a></li>
+
+  <li *ngIf="pageNumber==maxPages! - 0 - 6"><a (click)="goToPaginated(maxPages! - 0 - 12)">{{maxPages! - 0 - 12}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 6"><a (click)="goToPaginated(maxPages! - 0 - 11)">{{maxPages! - 0 - 11}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 6"><a (click)="goToPaginated(maxPages! - 0 - 10)">{{maxPages! - 0 - 10}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 6"><a (click)="goToPaginated(maxPages! - 0 - 9)">{{maxPages! - 0 - 9}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 6"><a (click)="goToPaginated(maxPages! - 0 - 8)">{{maxPages! - 0 - 8}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 6"><a (click)="goToPaginated(maxPages! - 0 - 7)">{{maxPages! - 0 - 7}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 6"><a (click)="goToPaginated(maxPages! - 0 - 6)">{{maxPages! - 0 - 6}}</a></li>
+
+  <li *ngIf="pageNumber==maxPages! - 0 - 5"><a (click)="goToPaginated(maxPages! - 0 - 11)">{{maxPages! - 0 - 11}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 5"><a (click)="goToPaginated(maxPages! - 0 - 10)">{{maxPages! - 0 - 10}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 5"><a (click)="goToPaginated(maxPages! - 0 - 9)">{{maxPages! - 0 - 9}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 5"><a (click)="goToPaginated(maxPages! - 0 - 8)">{{maxPages! - 0 - 8}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 5"><a (click)="goToPaginated(maxPages! - 0 - 7)">{{maxPages! - 0 - 7}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 5"><a (click)="goToPaginated(maxPages! - 0 - 6)">{{maxPages! - 0 - 6}}</a></li>
+
+  <li *ngIf="pageNumber==maxPages! - 0 - 4"><a (click)="goToPaginated(maxPages! - 0 - 10)">{{maxPages! - 0 - 10}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 4"><a (click)="goToPaginated(maxPages! - 0 - 9)">{{maxPages! - 0 - 9}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 4"><a (click)="goToPaginated(maxPages! - 0 - 8)">{{maxPages! - 0 - 8}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 4"><a (click)="goToPaginated(maxPages! - 0 - 7)">{{maxPages! - 0 - 7}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 4"><a (click)="goToPaginated(maxPages! - 0 - 6)">{{maxPages! - 0 - 6}}</a></li>
+
+  <li *ngIf="pageNumber==maxPages! - 0 - 3"><a (click)="goToPaginated(maxPages! - 0 - 9)">{{maxPages! - 0 - 9}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 3"><a (click)="goToPaginated(maxPages! - 0 - 8)">{{maxPages! - 0 - 8}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 3"><a (click)="goToPaginated(maxPages! - 0 - 7)">{{maxPages! - 0 - 7}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 3"><a (click)="goToPaginated(maxPages! - 0 - 6)">{{maxPages! - 0 - 6}}</a></li>
+
+  <li *ngIf="pageNumber==maxPages! - 0 - 2"><a (click)="goToPaginated(maxPages! - 0 - 8)">{{maxPages! - 0 - 8}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 2"><a (click)="goToPaginated(maxPages! - 0 - 7)">{{maxPages! - 0 - 7}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 2"><a (click)="goToPaginated(maxPages! - 0 - 6)">{{maxPages! - 0 - 6}}</a></li>
+
+  <li *ngIf="pageNumber==maxPages! - 0 - 1"><a (click)="goToPaginated(maxPages! - 0 - 7)">{{maxPages! - 0 - 7}}</a></li>
+  <li *ngIf="pageNumber==maxPages! - 0 - 1"><a (click)="goToPaginated(maxPages! - 0 - 6)">{{maxPages! - 0 - 6}}</a></li>
+
+  <li *ngIf="pageNumber==maxPages!"><a (click)="goToPaginated(maxPages! - 0 - 6)">{{maxPages! - 0 - 6}}</a></li>
+
+  <li><a (click)="goToPaginated(maxPages! - 0 - 5)">{{maxPages! - 0 - 5}}</a></li>
+  <li><a (click)="goToPaginated(maxPages! - 0 - 4)">{{maxPages! - 0 - 4}}</a></li>
+  <li><a (click)="goToPaginated(maxPages! - 0 - 3)">{{maxPages! - 0 - 3}}</a></li>
+  <li><a (click)="goToPaginated(maxPages! - 0 - 2)">{{maxPages! - 0 - 2}}</a></li>
+  <li><a (click)="goToPaginated(maxPages! - 0 - 1)">{{maxPages! - 0 - 1}}</a></li>
+  <li><a (click)="goToPaginated(maxPages!)">{{maxPages!}}</a></li>
+</ul>
+<br><br>  
+
+  <table class="elTable">
+    <thead>
+      <tr>
+        <th class="headerText">#</th>
+        <th class="headerText">Name</th>
+        <th class="headerText">CNP</th>
+        <th class="headerText">Address</th>
+        <th class="headerText">Experience</th>
+        <th class="headerText">FavouriteCarBrand</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let mechanic of mechanics; let i = index">
+        <td class="cellText"><a (click)="goToGetOne(mechanic.id)">{{ (pageNumber! - 1) * 10 + i + 1}}</a></td>
+        <td class="cellText">{{ mechanic['name'] }}</td>
+        <td class="cellText">{{ mechanic['cnp'] }}</td>
+        <td class="cellText">{{ mechanic['address'] }}</td>
+        <td class="cellText">{{ mechanic['experience'] }}</td>
+        <td class="cellText">{{ mechanic['favouriteCarBrand'] }}</td>
+        <td class="cellText"><button (click)="goToUpdate(mechanic.id)">Update mechanic</button></td>
+        <td class="cellText"><button (click)="goToDelete(mechanic.id)">Delete mechanic</button></td>
+      </tr>
+    </tbody>
+  </table>
+</ng-container>
